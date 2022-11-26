@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a20311328c53442d93625f41ffb4013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HigthlitedTile: {fileID: 380587088, guid: 26f3587b220764a4ab6be438a72b06f4, type: 3}
+  HigthlitedTile: {fileID: 21300000, guid: d498a1c5dd9f246cbb9f2221cedf0667, type: 3}
   DefaultTile: {fileID: -744824753, guid: 025001209a1424016b8dfe950c60056f, type: 3}
   highlitedColor: {r: 0.5943396, g: 0.1485849, b: 0.1485849, a: 0}
   isWalkable: 0

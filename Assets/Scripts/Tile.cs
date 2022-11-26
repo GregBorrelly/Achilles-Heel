@@ -27,13 +27,13 @@ public class Tile : MonoBehaviour
     private void OnMouseEnter()
     {
         rend = GetComponent<SpriteRenderer>();
-        rend.sprite = HigthlitedTile;
+        // rend.sprite = HigthlitedTile;
     }
 
     private void OnMouseExit()
     {
         rend = GetComponent<SpriteRenderer>();
-        rend.sprite = DefaultTile;
+        // rend.sprite = DefaultTile;
     }
 
     // Update is called once per frame
@@ -41,7 +41,8 @@ public class Tile : MonoBehaviour
     {
     }
 
-    public bool isClear() // does this tile have an obstacle on it. Yes or No?
+    public bool
+    isClear() // does this tile have an obstacle on it. Yes or No?
     {
         Collider2D col =
             Physics2D.OverlapCircle(transform.position, 0.2f, obstacles);
@@ -63,9 +64,18 @@ public class Tile : MonoBehaviour
         isWalkable = true;
     }
 
-    public void reset()
+    public void Reset()
     {
-        rend.color = Color.white;
+        rend = GetComponent<SpriteRenderer>();
+        rend.sprite = DefaultTile;
         isWalkable = false;
+    }
+
+    private void OnMouseDown()
+    {
+        if (isWalkable && gm.selectedUnit != null)
+        {
+            gm.selectedUnit.Move(this.transform.position);
+        }
     }
 }
