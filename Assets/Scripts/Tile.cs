@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+        public float hoverAmount;
+
     private SpriteRenderer rend;
 
     public Sprite HigthlitedTile;
@@ -15,6 +17,8 @@ public class Tile : MonoBehaviour
     public bool isWalkable;
 
     public LayerMask obstacles;
+    private AudioSource source;
+    public AudioClip hoverSound;
 
     GameMaster gm;
 
@@ -22,18 +26,18 @@ public class Tile : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameMaster>();
+        source = GetComponent<AudioSource>();
     }
-
     private void OnMouseEnter()
     {
-        rend = GetComponent<SpriteRenderer>();
-        // rend.sprite = HigthlitedTile;
+        transform.localScale += Vector3.one * hoverAmount;
+         source.clip = hoverSound;
+         source.Play();
     }
 
     private void OnMouseExit()
     {
-        rend = GetComponent<SpriteRenderer>();
-        // rend.sprite = DefaultTile;
+        transform.localScale -= Vector3.one * hoverAmount;
     }
 
     // Update is called once per frame
@@ -75,7 +79,7 @@ public class Tile : MonoBehaviour
     {
         if (isWalkable && gm.selectedUnit != null)
         {
-            gm.selectedUnit.Move(this.transform.position);
+            gm.selectedUnit.Move(this.transform);
         }
     }
 }
